@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        body{
+            font-size: 14px;
+            font-family: 'noto sans cjk kr';
+            height: 20000px;
+            overscroll-behavior-y: none;
+        }
+        h1{
+            font-size: 24px;
+            font-weight: bold;
+        }
+        h2{
+            font-size: 100px;
+            font-weight: bold;
+        }
+        h3{
+            font-size: 80px;
+        }
+        h5{
+            font-size: 30px;
+        }
+        .sctTop{
+            color: red;
+            font-weight: bold;
+        }
+        .inside{
+            width: 1280px;
+            margin: 0 auto;
+        }
+        header{
+            border-bottom: 1px solid #ccc;
+            position: fixed;
+            width: 100%;
+            height: 50px;
+            z-index: 20;
+            background: #fff;
+        }
+        header > div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            line-height: 50px;
+        }
+        header ul{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 200px;
+        }
+        header li:last-child{
+            line-height: 20px;
+            padding: 3px 10px;
+            background: blue;
+            color: #fff;
+            border-radius: 20px;
+        }
+        section{
+            position: relative;
+            width: 100vw;
+        }
+        section.visual{
+            position: sticky;
+            top: 0px;
+            height: 320vh;
+            width: 100%;
+            padding-top: 50px;
+            background: #eee;
+        }
+        .visual_img{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            }
+        .visual_text{
+            padding-top: 150px;
+            height: 500px;
+            text-align: center;
+        }
+        .on_text{
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        .visual_sub{
+            margin-top: 100px;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        .menu{
+            background: #ddd;
+            opacity: 0;
+            height: 200vh;
+        }
+        .video{
+            width: 100%;
+            height: 100vh;
+        }
+        video{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="inside">
+            <h1>IONIQ 5</h1>
+            <h5 class="sctTop"></h5>
+            <ul>
+                <li><a href="#">개요</a></li>
+                <li><a href="#">주요 특징</a></li>
+                <li><a href="#">견적 내기</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <section class="visual">
+            <div class="visual_img">
+                <img class="visual_img" src="images/intro/ioniq_0.jpg" alt="">
+            </div>
+            <div class="visual_text inside">
+                <div class="on_text">
+                    <h3>IONIQ 5</h3>
+                    <h2>Welcome on board</h2>
+                </div>
+                <div class="visual_sub">  
+                    <h5>최초의 경험으로 가득찬 새로운 모빌리티 시대가 열립니다.</h5>
+                    <h5>무엇이든 가능한 세상, IONIQ 5를 경험하세요.</h5>
+                </div>
+            </div>
+        </section>
+        <section class="menu">
+            <div class="video">
+                <video src="video/wheel.mp4" muted></video>
+                <p>blah blah blah</p>
+                <p>ddddd</p>
+                <p>sdddddd</p>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+    <script>
+        let sctTop;
+        window.addEventListener('scroll',function(){
+            sctTop = window.pageYOffset;
+            let check = document.querySelector('.sctTop');
+            check.innerHTML = sctTop;
+            img_move(sctTop)
+            on_text(sctTop)
+        })
+        let target;
+        let img;
+        let i;
+        function img_move(item){
+            target = document.querySelector('.visual_img img');
+            i = Math.floor(item/10);
+            let visual = document.querySelector('.visual');
+            if(i <= 139){
+                target.setAttribute('src',`images/intro/ioniq_${i}.jpg`);
+            }
+        }
+        function on_text(item){
+            target = document.querySelector('.on_text');
+            target2 = document.querySelector('.visual_sub')
+            let menu = document.querySelector('.menu')
+            let video= document.querySelector('.video')
+            if(item >= 1400 && item < 1900){
+                target.style.opacity = `${(item-1400)*0.0018}`
+                target.style.transform = `translateY(${-(item-1400)*0.1}px)`
+            }
+            if(item >= 1800 && item < 2000){
+                target2.style.opacity = `${(item-1800)*0.005}`
+                target2.style.transform = `translateY(${-(item-1800)*0.3}px)`
+            }
+            if(item >=2400 && item < 3000){
+                menu.style.opacity = `${(item-2000)*0.0012}`
+            }
+            if(item >= 3100){
+                video.style.position = 'sticky'
+                video.style.top='0'
+            }
+        }
+
+    </script>
+</body>
+</html>
