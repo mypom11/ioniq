@@ -105,8 +105,9 @@ header{
         .visual_content_main{
             height: 200vh;
             .visual_content_slide{
-                img{
+                video{
                     @include size(100vw, 100vh);
+                    object-fit: cover;
                 }
             }
         }
@@ -257,7 +258,7 @@ header{
 #v2l{
     .v2l_container{
         width: 100vw;
-        height: 620vh;
+        height: 640vh;
         .v2l_content_main{
             position: relative;
             transition: 0.5s;
@@ -271,8 +272,9 @@ header{
                 height: 360px;
                 display: none;
                 transition: 0.5s;
-                img{
+                video{
                     @include size;
+                    object-fit: cover;
                 }
                 &.v2l_first{
                     left: 10%;
@@ -363,4 +365,224 @@ header{
             }
         }
     }
+}
+
+//design
+
+@keyframes move{
+    from{
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#design{
+    .design_container{
+        article.on{
+            img{
+                animation: move 1s 0.1s ease-in forwards;
+            }
+            h5{
+                animation: move 1s 0.5s ease-in forwards;
+            }
+            p{
+                animation: move 1s 1s ease-in forwards;
+            }
+            span{
+                animation: move 1s 1.5s ease-in forwards;
+            }
+        }
+        .design_imgs{
+            overflow: hidden;
+            height: 100%;
+            img{
+                @include size(100%, auto);
+                transform: translateY(100%);
+                opacity: 0;
+            }
+        }
+        .design_texts{
+            overflow: hidden;
+            @include size(80%, 65%);
+            position: relative;
+            margin-top: 15.6%;
+            h5{
+                font-weight: bolder;
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            p{
+                line-height: em(50, 30);
+                margin-top: em(40, 30);
+                @include font(rem(30),null,#aaa);
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            span{
+                @include position($r:0,$b:0);
+                @include font(rem(20));
+                border: 1px solid #aaa;
+                border-radius: em(40, 20);
+                padding: em(10, 20) em(30,20);
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+        }
+        .exterior_grid, .interior_grid{
+            height: 220vh;
+            margin-top: em(60,14);
+            margin-bottom: em(60,14);
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+            grid-template-rows: repeat(3, auto);
+            gap: 5.2% 5%;
+        }
+        .design_video{
+                @include size(100vw , auto);
+                position: relative;
+                &.on{
+                    h3{
+                        animation: move 1s 0.5s ease-in forwards;
+                    }
+                }
+                video{
+                    @include size;
+                    object-fit: cover;
+                }
+                h3{
+                    @include position(65%, $r:20%);
+                    @include font(null, bold, #fff);
+                    transform: translateY(100%);
+                    opacity: 0;
+                }
+        }
+    }
+}
+
+//safety
+
+#safety{
+    .safety_container{
+        position: relative;
+        background: #ccc;
+        @include size(100vw,100vh);
+        overflow: hidden;
+        .safety_content{
+            padding: 4% 4.1%;
+            h5{
+                font-weight: bolder;
+                span{
+                    @include font(rem(20),bold,#777);
+                }
+            }
+            .safety_list{
+                margin-top: 5%;
+                display: grid;
+                grid-template-columns: repeat(2, auto);
+                grid-template-rows: repeat(2, 40%);
+                gap: 4% 2%;
+                li{
+                    position: relative;
+                    overflow: hidden;
+                    transform: translateY(100%);
+                    opacity: 0;
+                    &.on{
+                        @for $i from 1 to 5 {
+                            &:nth-child(#{$i}){
+                                animation: move 1.5s #{(0.3*$i)}s ease-in forwards
+                            } 
+                        }  
+                    } 
+                    &:hover{
+                        .safety_list_text{
+                            bottom: 0;
+                        }
+                    }
+                    img{
+                        @include size;
+                    }
+                    .safety_list_text{
+                        width: 100%;
+                        background: #fff;
+                        @include position($b:-30%, $l:0);
+                        padding: em(30,30) em(50,30);
+                        transition: 0.5s;
+                        h6{
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+            .more{
+                width: 30%;
+                text-align: center;
+                margin: 0 auto;
+                @include font(null, regular, $main_color);
+                transform: translateY(-200%);
+            }
+        }
+        .safety_video_box{
+            @include position(0,$r:-100%);
+            @include size(100vw,100vh);
+            @include flex(center, center, column); 
+            opacity: 0;
+            transition: 1s;
+            &.on{
+                right: 0;
+                opacity: 1;
+            }
+            .safety_video{
+                height: 50%;
+                position: relative;
+                top: -10%;
+                z-index: 2;
+                video{
+                    @include size;
+                    object-fit: cover;
+                }
+            }
+            .black_bg{
+                @include size;
+                background: rgba(0,0,0,0.8);
+                @include position;
+            }   
+            .safety_video_text{
+                top:-10%;
+                margin-top: 2%;
+                position: relative;
+                li{
+                    display: none;
+                    @include position;
+                    width: 70%;
+                    h6{
+                        @include font(null, bold, #fff);
+                        margin-bottom: em(30,40);
+                        transform: translateY(100%);
+                        opacity: 0;
+                    }
+                    p{
+                        @include font(rem(20), null, #ccc);
+                        line-height: em(30,20);
+                        transform: translateY(100%);
+                        opacity: 0;
+                    }
+                    &.on{
+                        display: block;
+                        h6{
+                            animation: move 1s 0.2s ease-in forwards
+                        }
+                        p{
+                            animation: move 1s 0.5s ease-in forwards
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 }

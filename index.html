@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IONIQ5::Welcome on board</title>
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="scss/style.css">
     <script defer src="js/main.js"></script>
 </head>
 <body ondragstart="return false" onselectstart="return false">
@@ -26,7 +26,7 @@
             <div class="visual_content">
                 <div class="visual_content_main">
                     <div class="visual_content_slide sticky">
-                        <img src="images/intro/ioniq_0.jpg" alt="Welcome IONIQ5" class="visual_content_main_img">
+                        <video src="video/intro.mp4" muted autoplay alt="Welcome IONIQ5">
                     </div>
                 </div>
                 <div class="visual_content_text">
@@ -82,17 +82,17 @@
             <div class="v2l_container">
                 <div class="v2l_content sticky">
                     <div class="v2l_content_main">
-                        <figure class="v2l_first img_figure">
-                            <img src="images/v2l/v2l_first0.jpg" alt="v2l홍보">
+                        <figure class="v2l_first video_figure">
+                            <video src="video/v2l_small0.mp4" muted loop></video>
                         </figure>
-                        <figure class="v2l_second img_figure">
-                            <img src="images/v2l/v2l_second0.jpg" alt="v2l홍보">
+                        <figure class="v2l_second video_figure">
+                            <video src="video/v2l_small1.mp4" muted loop></video>
                         </figure>
-                        <figure class="v2l_third img_figure">
-                            <img src="images/v2l/v2l_third0.jpg" alt="v2l홍보">
+                        <figure class="v2l_third video_figure">
+                            <video src="video/v2l_small2.mp4" muted loop></video>
                         </figure>
-                        <figure class="v2l_fourth img_figure">
-                            <img src="images/v2l/v2l_fourth0.jpg" alt="v2l홍보">
+                        <figure class="v2l_fourth video_figure">
+                            <video src="video/v2l_small3.mp4" muted loop></video>
                         </figure>
                         <figure class="v2l_text">
                             <h2>V2L</h2>
@@ -125,9 +125,140 @@
                 </div>
             </div>
         </section>
-        <section id="exterior"></section>
-        <section id="interior"></section>
-        <section id="smartsense"></section>
+        <section id="design">
+            <div class="design_container">
+                <div class="design_exterior">
+                    <div class="design_video">
+                        <video src="video/front_led.mp4" muted loop alt="프론트 LED"></video>
+                        <h3>Exterior Design</h3>
+                    </div>
+                    <div class="exterior_grid inner">
+                        <article class="design_imgs">
+                            <img src="images/exterior0.jpg" alt="Full LED 헤드램프 (프로젝션 타입)">
+                        </article>
+                        <article class="design_texts">
+                            <h5>Full LED 헤드램프</h5>
+                            <p>아이오닉 브랜드를 상징하는 파라메트릭 픽셀 램프 디자인으로 유니크한 이미지를 구현했습니다.</p>
+                            <span>자세히보기</span>
+                        </article>
+                        <article class="design_texts">
+                            <h5>가니쉬 히든 라이팅</h5>
+                            <p>반투과 도장 기술을 이용해 점등 시 차별화된 라이팅 패턴을 구현하여 아이오닉 5만의 아이덴티티를 구현했습니다</p>
+                            <span>자세히보기</span>
+                        </article>
+                        <article class="design_imgs">
+                            <img src="images/exterior1.jpg" alt="가니쉬 히든 라이팅">
+                        </article>
+                        <article class="design_imgs">
+                            <img src="images/exterior2.jpg" alt="디지털 사이드 미러">
+                        </article>
+                        <article class="design_texts">
+                            <h5>디지털 사이드 미러</h5>
+                            <p>사이드 미러를 카메라와 OLED 모니터로 대체하여 선명한 후방 시야를 제공하며 안전성을 향상시킵니다.</p>
+                            <span>자세히보기</span>
+                        </article>
+                    </div>
+                </div>
+                <div class="design_interior">
+                    <div class="design_video">
+                        <video src="video/sunroop.mp4" muted loop alt="비전 루프"></video>
+                        <h3>interior Design</h3>
+                    </div>
+                    <div class="interior_grid inner">
+                        <article class="design_texts">
+                            <h5>비전루프</h5>
+                            <p>루프 전체를 고정 유리로 적용하고 전동 롤 블라인드 기능을 추가한 비전루프를 장착해 개방감을 향상시켰습니다.</p>
+                            <span>자세히보기</span>
+                        </article>
+                        <article class="design_imgs">
+                            <img src="images/interior0.jpg" alt="비전루프">
+                        </article>
+                        <article class="design_imgs">
+                            <img src="images/interior1.jpg" alt="전자식 변속 다이얼">
+                        </article>
+                        <article class="design_texts">
+                            <h5>전자식 변속 다이얼</h5>
+                            <p>현대자동차 최초로 적용된 컬럼 로터리 타입 전자식 변속 다이얼로 조작 방향과 구동 방향을 일치시켜 직관적 조작 방식을 구현했습니다.</p>
+                            <span>자세히보기</span>
+                        </article>
+                        <article class="design_texts">
+                            <h5>앰비언트 무드램프</h5>
+                            <p>64색 가변 무드램프로 다양한 실내 분위기를 연출할 수 있습니다.</p>
+                            <span>자세히보기</span>
+                        </article>
+                        <article class="design_imgs">
+                            <img src="images/interior2.jpg" alt="앰비언트 무드램프">
+                        </article>                  
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="safety">
+            <div class="safety_container">
+                <div class="safety_content inner">
+                    <h5>안전한 드라이빙 <span>Hyundai Smart Sence</span></h5>
+                    <ul class="safety_list on">
+                        <li><a href="">
+                            <div class="safety_list_img">
+                                <img src="images/safety0.jpg" alt="고속도로 주행보조2" data-num="0">
+                            </div>
+                            <div class="safety_list_text">
+                                <h6>고속도로 주행 보조 2</h6>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <div class="safety_list_img">
+                                <img src="images/safety1.jpg" alt="전방 충돌 방지 보조" data-num="1">
+                            </div>
+                            <div class="safety_list_text">
+                                <h6>전방 충돌방지 보조</h6>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <div class="safety_list_img">
+                                <img src="images/safety2.jpg" alt="후측방 충돌방지 보조" data-num="2">
+                            </div>
+                            <div class="safety_list_text">
+                                <h6>후측방 충돌방지 보조</h6>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <div class="safety_list_img">
+                                <img src="images/safety3.jpg" alt="후방 교차 충돌방지 보조" data-num="3">
+                            </div>
+                            <div class="safety_list_text">
+                                <h6>후방 교차 충돌방지 보조</h6>
+                            </div>
+                        </a></li>
+                    </ul>
+                    <p class="more"><a href="#">더 많은 안전사항 보기</a></p>
+                </div>
+                <div class="safety_video_box">
+                    <div class="safety_video inner">
+                        <video src="video/safety0.mp4" loop muted></video>
+                    </div>
+                    <div class="black_bg"></div>
+                    <ul class="safety_video_text inner">
+                        <li class='on'>
+                            <h6>고속도로 주행 보조 2</h6>
+                            <p>고속도로 / 자동차 전용도로에서 앞차와의 거리와 설정 속도를 유지하며 주행할 뿐 아니라, 곡선로에서도 차로의 중앙을 유지하며 주행할 수 있도록 도와줍니다. 일정 속도 이상으로 주행 시, 스티어링 휠을 잡은 상태에서 방향지시등 스위치를 변경하고자 하는 차로 방향으로 움직이면 자동으로 차로를 변경해 줍니다.</p>
+                        </li>
+                        <li>
+                            <h6>전방 충돌방지 보조</h6>
+                            <p>선행 차량이 갑자기 속도를 줄이거나, 앞에 정지 차량, 보행자 혹은 자전거 탑승자가 나타나는 등 전방 충돌 위험이 감지되면 운전자에게 경고하고, 경고 후에도 충돌 위험이 높아지면 자동으로 제동을 도와줍니다. 또한 주행 중 교차로에서 좌회전 시 맞은편에서 다가오는 차량과 충돌 위험이 있거나, 교차로 좌/우측에서 다가오는 차량과 충돌 위험이 있는 경우에도 자동으로 제동을 도와줍니다.</p>
+                        </li>
+                        <li>
+                            <h6>후측방 충돌방지 보조</h6>
+                            <p>차로 변경을 위하여 방향지시등 스위치 조작 시, 후측방 차량과 충돌 위험이 감지되면 경고를 해줍니다. 경고 후에도 충돌 위험이 높아지면, 자동으로 차량을 제어하여 충돌 회피를 도와줍니다.</p>
+                        </li>
+                        <li>
+                            <h6>후방 교차 충돌방지 보조</h6>
+                            <p>후진 중 좌/우측에서 다가오는 차량과 충돌 위험이 감지되면 경고를 해줍니다. 경고 후에도 충돌 위험이 높아지면 자동으로 제동을 도와줍니다.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
         <section id="service"></section>
         <section id="buy"></section>
     </main>
