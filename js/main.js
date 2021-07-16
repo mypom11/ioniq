@@ -37,20 +37,20 @@ function visual_img(sct){
     if(sct >= 1200 && sct <= 1400){
         count = counter(sct, 1200, 200);
         reverse = counterReverse(sct, 1400, 200);
-        mainText.style.marginTop = `${reverse*200}px`;
+        mainText.style.marginTop = `${reverse*12.5}rem`;
         mainText.style.opacity = `${count}`;
     }
     if(sct >= 1400 && sct <= 1600){
         count = counter(sct, 1400, 200);
         reverse = counterReverse(sct, 1600, 200);
-        subText.style.marginTop = `${reverse*200}px`;
+        subText.style.marginTop = `${reverse*12.5}rem`;
         subText.style.opacity = `${count}`;
     }
     if(sct >= 1600 && sct <= 1800){
         subTextP.forEach(function(item){
             count = counter(sct, 1600, 200);
             reverse = counterReverse(sct, 1800, 200);
-            item.style.marginTop = `${reverse*200+10}px`;
+            item.style.marginTop = `${reverse*12.5+0.625}rem`;
             item.style.opacity = `${count}`;
         })
     }
@@ -121,7 +121,7 @@ function charging(sct, min, max){
         clearInterval(timer);
         countNum();
         chargingText.classList.add('on');
-    }else if(sct>=6800 || sct < sectionTop*min){
+    }else if(sct >= 6800 || sct < sectionTop*min){
         video.pause;;
         clearInterval(timer);
         chargingText.classList.remove('on');
@@ -181,6 +181,8 @@ function v2lFigure(sct, min){
         }else if(sct < sectionTop*(min+0.045*i)){
             figure[i].children[0].pause();
             figure[i].style.display = 'none';
+        }else if(sct > sectionTop*1.65){
+            figure[i].children[0].pause();
         }
     }
 }
@@ -245,19 +247,22 @@ class Color{
         model.children[0].setAttribute('src',`images/vr/${this.colorName}/${this.startNum}.png`);
     }
 }
-let color1 = new Color('#eee','atlas_white',0,'#B1B2B8');
-let color2 = new Color('#aaa','olive_green', 57, '#4B4947');
-let color3 = new Color('#333','phantom_Black', 54, '#1b1b1b');
-let color4 = new Color('teal','till_green', 51,'#293437');
-let color5 = new Color('skyblue','lucid_blue', 48,'#3F5066');
-let color6 = new Color('beige','gold_matt', 45, '#888684');
-let colors = [color1,color2,color3,color4,color5,color6];
+let colors = [
+    new Color('#eee','atlas_white',0,'#B1B2B8'),
+    new Color('#aaa','olive_green', 57, '#4B4947'),
+    new Color('#333','phantom_Black', 54, '#1b1b1b'),
+    new Color('teal','till_green', 51,'#293437'),
+    new Color('skyblue','lucid_blue', 48,'#3F5066'),
+    new Color('beige','gold_matt', 45, '#888684'),
+]
 
 function vr(sct, min){
     sectionTop = document.querySelector('#vr').offsetTop;
-    for(let i =0; i<=colors.length; i++){
-        if(sct>= (min+0.018*i)*sectionTop && sct < (min+0.018*(i+1))*sectionTop){
-            colors[i].colorChange();
+    if(sct>= min*sctTop && sct < (min+colors.length)*sectionTop){
+        for(let i =0; i<colors.length; i++){
+            if(sct>= (min+0.018*i)*sectionTop && sct < (min+0.018*(i+1))*sectionTop){
+                colors[i].colorChange();
+            }
         }
     }
 }
@@ -300,6 +305,8 @@ function designVideoPlay(sct){
         }else if(objectTop-400 > sct){
             item.children[0].pause();
             item.classList.remove('on');
+        }else if(objectTop + 1000 < sct ){
+            item.children[0].pause();
         }
     })
 }

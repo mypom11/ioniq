@@ -1,9 +1,15 @@
+@media (min-width: 768px) and (max-width: 1024px) {
+  html {
+    font-size: 14px;
+  }
+}
+
 body {
   font-size: 0.875rem;
   font-weight: normal;
   color: #3d3d3d;
   font-family: 'NanumSquare',sans-serif;
-  height: 20000vh;
+  overflow-x: hidden;
 }
 
 body h1 {
@@ -14,6 +20,13 @@ body h1 {
 body h2 {
   font-size: 7.5rem;
   font-weight: bold;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  body h2 {
+    font-size: 5rem;
+    font-weight: bold;
+  }
 }
 
 body h3 {
@@ -40,6 +53,13 @@ body .inner {
   width: 1280px;
   min-width: 1024px;
   margin: 0 auto;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  body .inner {
+    width: 768px;
+    min-width: 768px;
+  }
 }
 
 body .sticky {
@@ -93,7 +113,7 @@ header #nav ul li:last-child {
 
 #visual .visual_content {
   background: #eee;
-  padding-top: 50px;
+  padding-top: 1em;
 }
 
 #visual .visual_content .visual_content_main {
@@ -109,7 +129,7 @@ header #nav ul li:last-child {
 
 #visual .visual_content .visual_content_text {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 1em;
   height: 80vh;
 }
 
@@ -171,8 +191,8 @@ header #nav ul li:last-child {
 
 #perfomance .perfomance_container .perfomance_content .perfomance_content_text {
   position: absolute;
-  top: 300px;
-  right: 30%;
+  top: 30%;
+  left: 65%;
   font-size: 1.25rem;
   font-weight: bold;
 }
@@ -195,7 +215,7 @@ header #nav ul li:last-child {
 
 #perfomance .perfomance_container .perfomance_content .perfomance_content_bottom {
   position: absolute;
-  top: 850px;
+  top: 83%;
   left: 23%;
   opacity: 0;
   -webkit-transition: 1s;
@@ -365,7 +385,7 @@ header #nav ul li:last-child {
 #v2l .v2l_container .v2l_content_main figure.v2l_text {
   display: none;
   font-size: 7.5rem;
-  font-weight: bold;
+  font-weight: bolder;
   color: #fff;
   width: auto;
   height: auto;
@@ -455,6 +475,7 @@ header #nav ul li:last-child {
 }
 
 #vr .vr_container .vr_contents_main .vr_model {
+  will-change: contents;
   text-align: center;
   margin: 0 auto;
 }
@@ -536,7 +557,8 @@ header #nav ul li:last-child {
 #design .design_container .design_texts p {
   line-height: 1.66667em;
   margin-top: 1.33333em;
-  font-size: 1.875rem;
+  font-size: 1.5rem;
+  font-weight: regular;
   color: #aaa;
   -webkit-transform: translateY(100%);
           transform: translateY(100%);
@@ -602,8 +624,6 @@ header #nav ul li:last-child {
 #safety .safety_container {
   position: relative;
   background: #ccc;
-  width: 100vw;
-  height: 100vh;
   overflow: hidden;
 }
 
@@ -635,6 +655,7 @@ header #nav ul li:last-child {
 #safety .safety_container .safety_content .safety_list li {
   position: relative;
   overflow: hidden;
+  will-change: auto;
   -webkit-transform: translateY(100%);
           transform: translateY(100%);
   opacity: 0;
@@ -676,8 +697,8 @@ header #nav ul li:last-child {
   left: 0;
   bottom: -30%;
   padding: 1em 1.66667em;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 #safety .safety_container .safety_content .safety_list li .safety_list_text h6 {
@@ -685,8 +706,8 @@ header #nav ul li:last-child {
 }
 
 #safety .safety_container .safety_content .more {
-  width: 30%;
   text-align: center;
+  width: 30%;
   margin: 0 auto;
   font-weight: regular;
   color: #0057EE;
@@ -699,7 +720,7 @@ header #nav ul li:last-child {
   top: 0;
   right: -100%;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -714,8 +735,8 @@ header #nav ul li:last-child {
       -ms-flex-direction: column;
           flex-direction: column;
   opacity: 0;
-  -webkit-transition: 1s;
-  transition: 1s;
+  -webkit-transition: 1s ease-in;
+  transition: 1s ease-in;
 }
 
 #safety .safety_container .safety_video_box.on {
@@ -724,8 +745,8 @@ header #nav ul li:last-child {
 }
 
 #safety .safety_container .safety_video_box .safety_video {
-  height: 50%;
   position: relative;
+  height: 50%;
   top: -10%;
   z-index: 2;
 }
@@ -786,5 +807,75 @@ header #nav ul li:last-child {
 #safety .safety_container .safety_video_box .safety_video_text li.on p {
   -webkit-animation: move 1s 0.5s ease-in forwards;
           animation: move 1s 0.5s ease-in forwards;
+}
+
+footer {
+  background: #333;
+}
+
+footer .footer_top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 1.42857em 0;
+}
+
+footer .footer_top h1 {
+  width: 60px;
+  height: 32px;
+  font-size: 0;
+  background-image: url("../images/logo_footer.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+footer .footer_top select {
+  font-size: 0.875rem;
+  font-weight: regular;
+  color: #fff;
+  background: #333;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+footer .footer_bottom .depth1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ddd;
+  border-bottom: 1px solid #ccc;
+  padding: 1.42857em 0.71429em;
+}
+
+footer .footer_bottom .depth1 ul {
+  margin-top: 1em;
+}
+
+footer .footer_bottom .depth1 ul li {
+  font-size: 0.75rem;
+  font-weight: regular;
+  color: #9c9c9c;
+  line-height: 1.66667em;
+}
+
+footer address {
+  font-size: 0.875rem;
+  font-weight: regular;
+  color: #9c9c9c;
+  text-align: center;
+  padding: 0.71429em;
 }
 /*# sourceMappingURL=style.css.map */

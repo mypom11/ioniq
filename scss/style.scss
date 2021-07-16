@@ -34,15 +34,35 @@ $main_color : #0057EE;
 @function em($s, $b){
     @return $s/$b +em;
 }
+@mixin middle_window{
+    @media (min-width: 768px) and (max-width: 1024px){
+      @content;
+    }
+}
+@mixin mobile{
+    @media (min-width: 0px) and (max-width: 767px){
+      @content;
+    }
+}
+
+html{
+    @include middle_window{
+        font-size: 14px;
+    }
+}
+
 body{
     @include font(rem(14), normal, #3d3d3d);
     font-family: 'NanumSquare',sans-serif;
-    height: 20000vh;
+    overflow-x: hidden;
     h1{
         @include font(rem(24), bold);
     }
     h2{
         @include font(rem(120), bold);
+        @include middle_window{
+            @include font(rem(80), bold);
+        }
     }
     h3{
         font-size: rem(80);
@@ -63,6 +83,10 @@ body{
         width: 1280px;
         min-width: 1024px;
         margin: 0 auto;
+        @include middle_window{
+            width: 768px;
+            min-width: 768px;
+        }
     }
     .sticky{
         position: sticky;
@@ -101,7 +125,7 @@ header{
 #visual{
     .visual_content{
         background: #eee;
-        padding-top: 50px;
+        padding-top: em(50,50);
         .visual_content_main{
             height: 200vh;
             .visual_content_slide{
@@ -113,7 +137,7 @@ header{
         }
         .visual_content_text{
             text-align: center;
-            margin-top: 50px;
+            margin-top: em(50,50);
             height: 80vh;
             .visual_content_text_main{
                 transition: 1s;
@@ -161,7 +185,7 @@ header{
                 }
             }
             .perfomance_content_text{
-                @include position($t:300px, $r:30%);
+                @include position($t:30%, $l:65%);
                 @include font(rem(20), bold);
                 li{
                     margin-bottom: em(40, 20);
@@ -176,7 +200,7 @@ header{
                 }
             }
             .perfomance_content_bottom{
-                @include position(850px, 23%);
+                @include position(83%, 23%);
                 opacity: 0;
                 transition: 1s;
                 width: 47%;
@@ -294,7 +318,7 @@ header{
                 }
                 &.v2l_text{
                     display: none;
-                    @include font(rem(120),bold,#fff);
+                    @include font(rem(120),bolder,#fff);
                     @include size(auto, auto);
                     text-align: center;
                     top: 50%;
@@ -360,6 +384,7 @@ header{
                 text-align: center;
             }
             .vr_model{
+                will-change: contents;
                 text-align: center;
                 margin: 0 auto;
             }
@@ -418,7 +443,7 @@ header{
             p{
                 line-height: em(50, 30);
                 margin-top: em(40, 30);
-                @include font(rem(30),null,#aaa);
+                @include font(rem(24), regular, #aaa);
                 transform: translateY(100%);
                 opacity: 0;
             }
@@ -470,7 +495,6 @@ header{
     .safety_container{
         position: relative;
         background: #ccc;
-        @include size(100vw,100vh);
         overflow: hidden;
         .safety_content{
             padding: 4% 4.1%;
@@ -489,6 +513,7 @@ header{
                 li{
                     position: relative;
                     overflow: hidden;
+                    will-change: auto;
                     transform: translateY(100%);
                     opacity: 0;
                     &.on{
@@ -511,7 +536,7 @@ header{
                         background: #fff;
                         @include position($b:-30%, $l:0);
                         padding: em(30,30) em(50,30);
-                        transition: 0.5s;
+                        transition: 0.5s ease-in-out;
                         h6{
                             font-weight: bold;
                         }
@@ -519,8 +544,8 @@ header{
                 }
             }
             .more{
-                width: 30%;
                 text-align: center;
+                width: 30%;
                 margin: 0 auto;
                 @include font(null, regular, $main_color);
                 transform: translateY(-200%);
@@ -528,17 +553,17 @@ header{
         }
         .safety_video_box{
             @include position(0,$r:-100%);
-            @include size(100vw,100vh);
+            @include size(100vw,100%);
             @include flex(center, center, column); 
             opacity: 0;
-            transition: 1s;
+            transition: 1s ease-in;
             &.on{
                 right: 0;
                 opacity: 1;
             }
             .safety_video{
-                height: 50%;
                 position: relative;
+                height: 50%;
                 top: -10%;
                 z-index: 2;
                 video{
@@ -584,5 +609,45 @@ header{
             }
         }
     }
-    
+}
+
+//footer
+
+footer{
+    background: #333;
+    .footer_top{
+        @include flex;
+        border-bottom: 1px solid #ccc;
+        padding: em(20,14) 0;
+        h1{
+            @include size(60px, 32px);
+            font-size: 0;
+            @include background('logo_footer.png');
+        }
+        select{
+            @include font(rem(14), regular, #fff);
+            background: #333;
+            align-self: flex-end;
+        }
+    }
+    .footer_bottom{
+        .depth1{
+            @include flex(space-between, null);
+            @include font(rem(16), bold, #ddd);
+            border-bottom: 1px solid #ccc;
+            padding: em(20, 14) em(10,14);
+            ul{
+                margin-top: em(14, 14);
+                li{
+                    @include font(rem(12), regular, #9c9c9c);
+                    line-height: em(20, 12);
+                }
+            }
+        }
+    }
+    address{
+        @include font(rem(14), regular, #9c9c9c);
+        text-align: center;
+        padding: em(10,14);
+    }
 }
