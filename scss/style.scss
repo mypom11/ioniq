@@ -35,12 +35,12 @@ $main_color : #0057EE;
     @return $s/$b +em;
 }
 @mixin middle_window{
-    @media (min-width: 768px) and (max-width: 1280px){
+    @media (min-width: 768px) and (max-width: 1279px){
       @content;
     }
 }
 @mixin mobile{
-    @media (min-width: 0px) and (max-width: 767px){
+    @media (min-width: 0px) and (max-width: 768px){
       @content;
     }
 }
@@ -49,6 +49,9 @@ html{
     scroll-behavior: smooth;
     @include middle_window{
         font-size: 14px;
+    }
+    @include mobile{
+        font-size: 10px;
     }
 }
 
@@ -87,6 +90,10 @@ body{
         @include middle_window{
             width: 768px;
             min-width: 768px;
+        }
+        @include mobile{
+            width: 340px;
+            min-width: 0;
         }
     }
     .sticky{
@@ -140,6 +147,15 @@ header{
             text-align: center;
             margin-top: em(50,50);
             height: 100vh;
+            @include mobile{
+                height: 50vh;
+                h3{
+                    @include font(30px);
+                }
+                h2{
+                    @include font(40px,bolder);
+                }
+            }
             .visual_content_text_main{
                 transition: 1s;
                 margin-bottom: em(50, 50);
@@ -159,7 +175,7 @@ header{
                     opacity: 0;
                     img{
                         margin-right: em(10, 20);
-                        @include size(24px, 24px)
+                        @include size(em(24,20), em(24,20))
                     }
                 }
             }
@@ -174,6 +190,9 @@ header{
     .perfomance_container{
         height: 300vh;
         position: relative;
+        @include mobile{
+            height: 80vh
+        }
         .perfomance_content{
             @include size(100vw, 100vh);
             overflow: hidden;
@@ -188,16 +207,28 @@ header{
             .perfomance_content_text{
                 @include position($t:30%, $l:65%);
                 @include font(rem(20), bold);
+                @include mobile{
+                    width: 80%;
+                    @include position($t:50%,$l:50%);
+                    transform: translateX(-50%);
+                    @include flex;
+                }
                 li{
                     margin-bottom: em(40, 20);
                     transition: 1s;
                     transform: translateY(0);
                     opacity: 0;
+                    @include mobile{
+                        opacity: 1;
+                    }
                 }
                 strong{
                     @include font(rem(40),bold);
                     display: block;
                     color: $main_color;
+                    @include mobile{
+                        margin-top: 10px;
+                    }
                 }
             }
             .perfomance_content_bottom{
@@ -205,6 +236,11 @@ header{
                 opacity: 0;
                 transition: 1s;
                 width: 60%;
+                @include mobile{
+                    @include position(70%,5%);
+                    opacity: 1;
+                    width: 90%
+                }
                 p{
                     @include font(rem(20), null, #aaa);
                     text-align: left;
@@ -242,8 +278,15 @@ header{
         height: 120vh;
         position: relative;
         .charging_content_main{
-            height: 100vh;
+            height: 100%;
             color: #fff;
+            .charging_content_video{
+                @include size;
+            }
+            video{
+                @include size;
+                object-fit: cover;
+            }
         }
         .charging_content_text{
             @include position(50%,50%);
@@ -262,6 +305,12 @@ header{
             h5{
                 opacity: 0;
                 transform: translateY(10%);
+                @include mobile{
+                    strong{
+                        display: block;
+                        margin-bottom: 50px;
+                    }
+                }
             }
             p{
                 opacity: 0;
@@ -303,18 +352,38 @@ header{
                 &.v2l_first{
                     left: 10vw;
                     top: 10vh;
+                    @include mobile{
+                        width: 100%;
+                        top:23%;
+                        left: 0;
+                    }
                 }
                 &.v2l_second{
                     top: 50vh;
                     left: 30vw;
+                    @include mobile{
+                        width: 100%;
+                        top: 23%;
+                        left: 0;
+                    }
                 }
                 &.v2l_third{
                     left: 50vw;
                     top: 10vh;
+                    @include mobile{
+                        width: 100%;
+                        top:23%;
+                        left: 0;
+                    }
                 }
                 &.v2l_fourth{
                     left: 70vw;
                     top: 50vh;
+                    @include mobile{
+                        width: 100%;
+                        top:23%;
+                        left: 0;
+                    }
                 }
                 &.v2l_text{
                     display: none;
@@ -352,16 +421,26 @@ header{
                     color: #fff;
                     h3{
                         font-weight: bolder;
+                        span{
+                            display: block;
+                            @include font(rem(40), bold, #aaa);
+                        }
                     }
                     h5{
                         font-weight: bold;
                         color: #ddd;
                         margin-top: em(50,40);
+                        @include mobile{
+                            @include font(rem(36),bolder)
+                        }
                     }
                     p{
                         color: #ccc;
                         width: 60%;
                         margin-top: em(20,20);
+                        @include mobile{
+                            width: 90%;
+                        }
                     }           
                 }
 
@@ -378,15 +457,29 @@ header{
         .vr_contents_main{
             @include size(100vw, 100vh);
             background: #eee;
+            @include mobile{
+                padding-top: 50px;
+            }
             p{
                 @include font(rem(80),bold,#000);
                 padding: em(120,80) 0;
                 text-align: center;
+                @include mobile{
+                    @include font(rem(100),bolder);
+                    span{
+                        @include font(rem(80),bold);
+                        margin-top: 20px;
+                        display: block
+                    }
+                }
             }
             .vr_model{
                 @include size(50vw,50vw);
                 text-align: center;
                 margin: 0 auto;
+                @include mobile{
+                    @include size(100vw, 100vw);
+                }
                 img{
                     @include size(100%,auto);
                     will-change: contents;
@@ -425,41 +518,27 @@ header{
                 animation: move 1s 1.5s ease-in forwards;
             }
         }
-        .design_imgs{
-            overflow: hidden;
-            width: 100%;
-            img{
-                @include size(100%, auto);
-                transform: translateY(100%);
-                opacity: 0;
-            }
-        }
-        .design_texts{
-            overflow: hidden;
+        .design_video{
+            @include size(100vw , auto);
             position: relative;
-            margin-top: 15.6%;
-            h5{
-                font-weight: bolder;
+            &.on{
+                h3{
+                    animation: move 1s 0.5s ease-in forwards;
+                }
+            }
+            video{
+                @include size;
+                object-fit: cover;
+            }
+            h3{
+                @include position(65%, $r:20%);
+                @include font(rem(80), bold, #fff);
                 transform: translateY(100%);
                 opacity: 0;
+                @include mobile{
+                    @include font(rem(40), bold, #fff);
+                }
             }
-            p{
-                line-height: em(50, 30);
-                margin-top: em(40, 30);
-                @include font(rem(24), regular, #aaa);
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            span{
-                @include position($r:0,$b:0);
-                @include font(rem(20));
-                border: 1px solid #aaa;
-                border-radius: em(40, 20);
-                padding: em(10, 20) em(30,20);
-                transform: translateY(100%);
-                opacity: 0;
-            }
-
         }
         .exterior_grid, .interior_grid{
             height: 130vw;
@@ -469,25 +548,80 @@ header{
             grid-template-columns: repeat(2, auto);
             grid-template-rows: repeat(3, 40vw);
             gap: 5vw 5vw;
-        }
-        .design_video{
-                @include size(100vw , auto);
-                position: relative;
-                &.on{
-                    h3{
-                        animation: move 1s 0.5s ease-in forwards;
+            article{
+                @for $i from 1 to 7 {
+                    &:nth-child(#{$i}){
+                        grid-area: grid_article#{$i};
                     }
                 }
-                video{
-                    @include size;
-                    object-fit: cover;
+            }
+            @include mobile{
+                height: 420vw;
+            }
+            .design_imgs{
+                overflow: hidden;
+                width: 100%;
+                img{
+                    @include size(100%, auto);
+                    transform: translateY(100%);
+                    opacity: 0;
+                }  
+            }
+            .design_texts{
+                overflow: hidden;
+                position: relative;
+                margin-top: 15.6%;
+                @include mobile{
+                    margin-top: 0;
                 }
-                h3{
-                    @include position(65%, $r:20%);
-                    @include font(null, bold, #fff);
+                h5{
+                    font-weight: bolder;
                     transform: translateY(100%);
                     opacity: 0;
                 }
+                p{
+                    line-height: em(50, 30);
+                    margin-top: em(40, 30);
+                    @include font(rem(24), regular, #aaa);
+                    transform: translateY(100%);
+                    opacity: 0;
+                }
+                span{
+                    @include position($r:0,$b:0);
+                    @include font(rem(20));
+                    border: 1px solid #aaa;
+                    border-radius: em(40, 20);
+                    padding: em(10, 20) em(30,20);
+                    transform: translateY(100%);
+                    opacity: 0;
+                }
+            }
+        }
+        .exterior_grid{
+            @include mobile{
+                grid-template-rows: repeat(6,60vw);
+                grid-template-areas: 
+                "grid_article1"
+                "grid_article2"
+                "grid_article4"
+                "grid_article3"
+                "grid_article5" 
+                "grid_article6";
+                gap: 10vw 0;
+            }
+        }
+        .interior_grid{
+            @include mobile{
+                grid-template-rows: repeat(6,60vw);
+                grid-template-areas: 
+                "grid_article2"
+                "grid_article1"
+                "grid_article3"
+                "grid_article4"
+                "grid_article6" 
+                "grid_article5";
+                gap: 10vw 0;
+            }
         }
     }
 }
@@ -513,6 +647,11 @@ header{
                 grid-template-columns: repeat(2, auto);
                 grid-template-rows: repeat(2, 40%);
                 gap: 4% 2%;
+                @include mobile{
+                    grid-template-columns: repeat(1, auto);
+                    grid-template-rows: repeat(4, auto);
+                    gap: 30px 0;
+                }
                 li{
                     position: relative;
                     overflow: hidden;
@@ -552,6 +691,11 @@ header{
                 margin: 0 auto;
                 @include font(null, regular, $main_color);
                 transform: translateY(-200%);
+                @include mobile{
+                    transform: translateY(0);
+                    margin: 30px auto;
+                    width: 40%;
+                }
             }
         }
         .safety_video_box{
@@ -569,6 +713,9 @@ header{
                 height: 50%;
                 top: -10%;
                 z-index: 2;
+                @include mobile{
+                    @include size(100vw, auto)
+                }
                 video{
                     @include size;
                     object-fit: cover;
@@ -587,14 +734,21 @@ header{
                     display: none;
                     @include position;
                     width: 70%;
+                    @include mobile{
+                        width: 100vw;
+                        padding: 20px 40px;
+                    }
                     h6{
-                        @include font(null, bold, #fff);
+                        @include font(rem(80), bold, #fff);
                         margin-bottom: em(30,40);
                         transform: translateY(100%);
                         opacity: 0;
+                        @include mobile{
+                            @include font(rem(40),bold, #fff);
+                        }
                     }
                     p{
-                        @include font(rem(20), null, #ccc);
+                        @include font(rem(20), regular, #ccc);
                         line-height: em(30,20);
                         transform: translateY(100%);
                         opacity: 0;
@@ -623,7 +777,7 @@ footer{
         border-bottom: 1px solid #ccc;
         padding: em(20,14) 0;
         h1{
-            @include size(60px, 32px);
+            @include size(rem(60), rem(32));
             font-size: 0;
             @include background('logo_footer.png');
         }
@@ -639,11 +793,22 @@ footer{
             @include font(rem(16), bold, #ddd);
             border-bottom: 1px solid #ccc;
             padding: em(20, 14) em(10,14);
+            @include mobile{
+                flex-wrap: wrap;
+                >li{
+                    @include font(rem(20),bold);
+                    margin-top: em(20,14);
+                    width: 50%;
+                }
+            }
             ul{
                 margin-top: em(14, 14);
                 li{
-                    @include font(rem(12), regular, #9c9c9c);
+                    @include font(rem(12), normal, #9c9c9c);
                     line-height: em(20, 12);
+                    @include mobile{
+                        @include font(rem(20),normal,#9c9c9c);
+                    }
                 }
             }
         }

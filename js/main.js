@@ -62,9 +62,15 @@ function visual(sct, min, length){
 //perfomance event
 function perfomance(sct){
     sectionTop = document.querySelector('#perfomance').offsetTop;
-    perfomanceVideo(sct,0.9 ,1.3);
-    perfomanceText(sct,1.2 ,1.3);
-    perfomanceBottom(sct, 1.4, 1.5);
+    if(window.innerWidth > 768){
+        perfomanceVideo(sct,0.9 ,1.3);
+        perfomanceText(sct,1.2 ,1.3);
+        perfomanceBottom(sct, 1.4, 1.5);
+    }else{
+        perfomanceText(sct, 0.7, 0.75);
+        perfomanceBottom(sct, 0.9, 1);
+    }
+    
 }
 
 
@@ -100,8 +106,8 @@ function perfomanceText(sct, min, max){
 
 function perfomanceBottom(sct, min, max){
     bottomText = document.querySelector('.perfomance_content_bottom');
-    newCounter(sct, min, 1.5);
-    if(sct >= sectionTop*min && sct <= sectionTop*1.5){
+    newCounter(sct, min, max);
+    if(sct >= sectionTop*min && sct <= sectionTop*max){
         bottomText.style.transform = `translateY(${-count*100}%)`;
         bottomText.style.opacity = `${count}`;
     }else if (sct < sectionTop*min){
