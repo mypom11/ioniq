@@ -6,9 +6,9 @@ let sectionTop=0;
 
 window.addEventListener('scroll',function(){
     sctTop = window.pageYOffset;
-    let check = document.querySelector('.sctTop');
-    check.innerHTML = sctTop;
-    visual_img(sctTop);
+    // let check = document.querySelector('.sctTop');
+    // check.innerHTML = sctTop;
+    visual(sctTop, 300, 200);
     perfomance(sctTop);
     charging(sctTop, 1, 1.23);
     v2l(sctTop);
@@ -30,30 +30,33 @@ function newCounter(sct, min, max){
 
 // visual event
 
-function visual_img(sct){
+function visual(sct, min, length){
     mainText = document.querySelector('.visual_content_text_main');
     subText = document.querySelector('.visual_content_text_sub');
     subTextP = subText.querySelectorAll('p');
-    if(sct >= 1200 && sct <= 1400){
-        count = counter(sct, 1200, 200);
-        reverse = counterReverse(sct, 1400, 200);
+    if(sct >= min && sct <= min+(1*length)){
+        count = counter(sct, min, length);
+        reverse = counterReverse(sct, min+(1*length), length);
         mainText.style.marginTop = `${reverse*12.5}rem`;
         mainText.style.opacity = `${count}`;
     }
-    if(sct >= 1400 && sct <= 1600){
-        count = counter(sct, 1400, 200);
-        reverse = counterReverse(sct, 1600, 200);
+    if(sct >= min+(1*length) && sct <= min+(2*length)){
+        count = counter(sct, min+(1*length), length);
+        reverse = counterReverse(sct, min+(2*length), length);
         subText.style.marginTop = `${reverse*12.5}rem`;
         subText.style.opacity = `${count}`;
     }
-    if(sct >= 1600 && sct <= 1800){
-        subTextP.forEach(function(item){
-            count = counter(sct, 1600, 200);
-            reverse = counterReverse(sct, 1800, 200);
+    subTextP.forEach(function(item){
+        if(sct >= min+(2*length) && sct <= min+(3*length)){
+            count = counter(sct, min+(2*length), length);
+            reverse = counterReverse(sct, min+(3*length), length);
             item.style.marginTop = `${reverse*12.5+0.625}rem`;
             item.style.opacity = `${count}`;
-        })
-    }
+        }else if (sct > min+(3*length)){
+            item.style.marginTop = `0.875rem`;
+            item.style.opacity = `1`;
+        }
+    })
 }
         
 //perfomance event
@@ -84,13 +87,11 @@ function perfomanceVideo(sct, min, max){
 function perfomanceText(sct, min, max){
     text = document.querySelectorAll('.perfomance_content_text li');
     newCounter(sct, min, max);
-    if(sct >= sectionTop*min && sct <= sectionTop*max){  
-        for(let i = 0; i < text.length; i++){
+    for(let i = 0; i < text.length; i++){
+        if(sct >= sectionTop*min && sct <= sectionTop*max){  
             text[i].style.transform = `translateY(${-count*200}%)`;
             text[i].style.opacity = `${count}`;
-        }
-    }else if(sct < sectionTop*min){
-        for(let i = 0; i < text.length; i++){
+        }else if(sct < sectionTop*min){
             text[i].style.transform = `translateY(0)`;
             text[i].style.opacity = 0;
         }
@@ -152,7 +153,7 @@ function v2l(sct){
 
     v2lBackground(sct, 1, 1.08);
     v2lFigure(sct, 1.1);
-    v2lBigText(sct, 1.23, 1.38);
+    v2lBigText(sct, 1.25, 1.38);
     v2lVideo(sct, 1.5, 1.6);
     v2lTextBox(sct, 1.6, 1.65);
 }

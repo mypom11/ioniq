@@ -1,4 +1,8 @@
-@media (min-width: 768px) and (max-width: 1024px) {
+html {
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
   html {
     font-size: 14px;
   }
@@ -22,7 +26,7 @@ body h2 {
   font-weight: bold;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1280px) {
   body h2 {
     font-size: 5rem;
     font-weight: bold;
@@ -55,7 +59,7 @@ body .inner {
   margin: 0 auto;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1280px) {
   body .inner {
     width: 768px;
     min-width: 768px;
@@ -100,12 +104,12 @@ header #nav ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 200px;
+  width: 21.42857em;
 }
 
 header #nav ul li:last-child {
   line-height: 1em;
-  padding: 0.15em 0.5em;
+  padding: 0.25em 0.5em;
   background: #0057EE;
   color: #fff;
   border-radius: 20px;
@@ -117,7 +121,7 @@ header #nav ul li:last-child {
 }
 
 #visual .visual_content .visual_content_main {
-  height: 200vh;
+  height: 120vh;
 }
 
 #visual .visual_content .visual_content_main .visual_content_slide video {
@@ -130,7 +134,7 @@ header #nav ul li:last-child {
 #visual .visual_content .visual_content_text {
   text-align: center;
   margin-top: 1em;
-  height: 80vh;
+  height: 100vh;
 }
 
 #visual .visual_content .visual_content_text .visual_content_text_main {
@@ -216,18 +220,18 @@ header #nav ul li:last-child {
 #perfomance .perfomance_container .perfomance_content .perfomance_content_bottom {
   position: absolute;
   top: 83%;
-  left: 23%;
+  left: 18%;
   opacity: 0;
   -webkit-transition: 1s;
   transition: 1s;
-  width: 47%;
+  width: 60%;
 }
 
 #perfomance .perfomance_container .perfomance_content .perfomance_content_bottom p {
   font-size: 1.25rem;
   color: #aaa;
   text-align: left;
-  line-height: 30px;
+  line-height: 1.5em;
 }
 
 #perfomance .perfomance_container .perfomance_content .perfomance_content_bottom p b {
@@ -236,10 +240,11 @@ header #nav ul li:last-child {
   color: #3d3d3d;
   display: block;
   margin-bottom: 0.66667em;
+  line-height: 1.33333em;
 }
 
 #perfomance .perfomance_container .perfomance_content .perfomance_content_bottom p:nth-of-type(2) {
-  margin-top: 1.5em;
+  margin-top: 2.5em;
   font-weight: bold;
   color: #0057EE;
   text-align: center;
@@ -278,7 +283,6 @@ header #nav ul li:last-child {
 
 #charging .charging_content .charging_content_main {
   height: 100vh;
-  background: black;
   color: #fff;
 }
 
@@ -348,8 +352,7 @@ header #nav ul li:last-child {
 
 #v2l .v2l_container .v2l_content_main figure {
   position: absolute;
-  width: 338px;
-  height: 360px;
+  width: 22vw;
   display: none;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -363,23 +366,23 @@ header #nav ul li:last-child {
 }
 
 #v2l .v2l_container .v2l_content_main figure.v2l_first {
-  left: 10%;
-  top: 100px;
+  left: 10vw;
+  top: 10vh;
 }
 
 #v2l .v2l_container .v2l_content_main figure.v2l_second {
-  top: 500px;
-  left: 30%;
+  top: 50vh;
+  left: 30vw;
 }
 
 #v2l .v2l_container .v2l_content_main figure.v2l_third {
-  left: 50%;
-  top: 100px;
+  left: 50vw;
+  top: 10vh;
 }
 
 #v2l .v2l_container .v2l_content_main figure.v2l_fourth {
-  left: 70%;
-  top: 500px;
+  left: 70vw;
+  top: 50vh;
 }
 
 #v2l .v2l_container .v2l_content_main figure.v2l_text {
@@ -452,7 +455,7 @@ header #nav ul li:last-child {
 
 #v2l .v2l_container .v2l_content_main .v2l_content_text_box .v2l_content_text p {
   color: #ccc;
-  width: 28vw;
+  width: 60%;
   margin-top: 1em;
 }
 
@@ -475,9 +478,16 @@ header #nav ul li:last-child {
 }
 
 #vr .vr_container .vr_contents_main .vr_model {
-  will-change: contents;
+  width: 50vw;
+  height: 50vw;
   text-align: center;
   margin: 0 auto;
+}
+
+#vr .vr_container .vr_contents_main .vr_model img {
+  width: 100%;
+  height: auto;
+  will-change: contents;
 }
 
 @-webkit-keyframes move {
@@ -528,7 +538,7 @@ header #nav ul li:last-child {
 
 #design .design_container .design_imgs {
   overflow: hidden;
-  height: 100%;
+  width: 100%;
 }
 
 #design .design_container .design_imgs img {
@@ -541,8 +551,6 @@ header #nav ul li:last-child {
 
 #design .design_container .design_texts {
   overflow: hidden;
-  width: 80%;
-  height: 65%;
   position: relative;
   margin-top: 15.6%;
 }
@@ -580,16 +588,16 @@ header #nav ul li:last-child {
 }
 
 #design .design_container .exterior_grid, #design .design_container .interior_grid {
-  height: 220vh;
+  height: 130vw;
   margin-top: 4.28571em;
   margin-bottom: 4.28571em;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (50%)[2];
-      grid-template-columns: repeat(2, 50%);
-  -ms-grid-rows: (auto)[3];
-      grid-template-rows: repeat(3, auto);
-  gap: 5.2% 5%;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+  -ms-grid-rows: (40vw)[3];
+      grid-template-rows: repeat(3, 40vw);
+  gap: 5vw 5vw;
 }
 
 #design .design_container .design_video {

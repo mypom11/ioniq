@@ -35,7 +35,7 @@ $main_color : #0057EE;
     @return $s/$b +em;
 }
 @mixin middle_window{
-    @media (min-width: 768px) and (max-width: 1024px){
+    @media (min-width: 768px) and (max-width: 1280px){
       @content;
     }
 }
@@ -46,6 +46,7 @@ $main_color : #0057EE;
 }
 
 html{
+    scroll-behavior: smooth;
     @include middle_window{
         font-size: 14px;
     }
@@ -108,10 +109,10 @@ header{
         line-height: 50px;
         ul{
             @include flex;
-            width: 200px;
+            width: em(300,14);
             li:last-child{
                 line-height: em(20,20);
-                padding: em(3,20) em(10,20);
+                padding: em(5,20) em(10,20);
                 background: $main_color;
                 color: #fff;
                 border-radius: 20px;
@@ -127,7 +128,7 @@ header{
         background: #eee;
         padding-top: em(50,50);
         .visual_content_main{
-            height: 200vh;
+            height: 120vh;
             .visual_content_slide{
                 video{
                     @include size(100vw, 100vh);
@@ -138,7 +139,7 @@ header{
         .visual_content_text{
             text-align: center;
             margin-top: em(50,50);
-            height: 80vh;
+            height: 100vh;
             .visual_content_text_main{
                 transition: 1s;
                 margin-bottom: em(50, 50);
@@ -200,21 +201,22 @@ header{
                 }
             }
             .perfomance_content_bottom{
-                @include position(83%, 23%);
+                @include position(83%, 18%);
                 opacity: 0;
                 transition: 1s;
-                width: 47%;
+                width: 60%;
                 p{
                     @include font(rem(20), null, #aaa);
                     text-align: left;
-                    line-height: 30px;
+                    line-height: em(30,20);
                     b{
                         @include font(rem(30), bold, #3d3d3d);
                         display: block;
                         margin-bottom: em(20, 30);
+                        line-height: em(40,30);
                     }
                     &:nth-of-type(2){
-                        margin-top: em(30, 20);
+                        margin-top: em(50, 20);
                         @include font(null,bold,$main_color);
                         text-align: center;
                     }
@@ -241,7 +243,6 @@ header{
         position: relative;
         .charging_content_main{
             height: 100vh;
-            background: black;
             color: #fff;
         }
         .charging_content_text{
@@ -292,8 +293,7 @@ header{
             @include flex(center);
             figure{
                 position: absolute;
-                width: 338px;
-                height: 360px;
+                width: 22vw;
                 display: none;
                 transition: 0.5s;
                 video{
@@ -301,20 +301,20 @@ header{
                     object-fit: cover;
                 }
                 &.v2l_first{
-                    left: 10%;
-                    top: 100px;
+                    left: 10vw;
+                    top: 10vh;
                 }
                 &.v2l_second{
-                    top: 500px;
-                    left: 30%;
+                    top: 50vh;
+                    left: 30vw;
                 }
                 &.v2l_third{
-                    left: 50%;
-                    top: 100px;
+                    left: 50vw;
+                    top: 10vh;
                 }
                 &.v2l_fourth{
-                    left: 70%;
-                    top: 500px;
+                    left: 70vw;
+                    top: 50vh;
                 }
                 &.v2l_text{
                     display: none;
@@ -360,7 +360,7 @@ header{
                     }
                     p{
                         color: #ccc;
-                        width: 28vw;
+                        width: 60%;
                         margin-top: em(20,20);
                     }           
                 }
@@ -384,9 +384,13 @@ header{
                 text-align: center;
             }
             .vr_model{
-                will-change: contents;
+                @include size(50vw,50vw);
                 text-align: center;
                 margin: 0 auto;
+                img{
+                    @include size(100%,auto);
+                    will-change: contents;
+                }
             }
         }
     }
@@ -423,7 +427,7 @@ header{
         }
         .design_imgs{
             overflow: hidden;
-            height: 100%;
+            width: 100%;
             img{
                 @include size(100%, auto);
                 transform: translateY(100%);
@@ -432,7 +436,6 @@ header{
         }
         .design_texts{
             overflow: hidden;
-            @include size(80%, 65%);
             position: relative;
             margin-top: 15.6%;
             h5{
@@ -459,13 +462,13 @@ header{
 
         }
         .exterior_grid, .interior_grid{
-            height: 220vh;
+            height: 130vw;
             margin-top: em(60,14);
             margin-bottom: em(60,14);
             display: grid;
-            grid-template-columns: repeat(2, 50%);
-            grid-template-rows: repeat(3, auto);
-            gap: 5.2% 5%;
+            grid-template-columns: repeat(2, auto);
+            grid-template-rows: repeat(3, 40vw);
+            gap: 5vw 5vw;
         }
         .design_video{
                 @include size(100vw , auto);
