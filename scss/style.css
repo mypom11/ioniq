@@ -426,6 +426,12 @@ header #nav ul li:last-child {
   height: 640vh;
 }
 
+@media (min-width: 0px) and (max-width: 768px) {
+  #v2l .v2l_container {
+    height: 300vh;
+  }
+}
+
 #v2l .v2l_container .v2l_content_main {
   position: relative;
   -webkit-transition: 0.5s;

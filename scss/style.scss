@@ -333,6 +333,9 @@ header{
     .v2l_container{
         width: 100vw;
         height: 640vh;
+        @include mobile{
+            height: 300vh;
+        }
         .v2l_content_main{
             position: relative;
             transition: 0.5s;
