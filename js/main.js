@@ -6,8 +6,6 @@ let sectionTop=0;
 
 window.addEventListener('scroll',function(){
     sctTop = window.pageYOffset;
-    // let check = document.querySelector('.sctTop');
-    // check.innerHTML = sctTop;
     visual(sctTop, 300, 200);
     perfomance(sctTop);
     charging(sctTop, 1, 1.23);
@@ -61,21 +59,29 @@ function visual(sct, min, length){
         
 //perfomance event
 function perfomance(sct){
+    video = document.querySelector('.perfomance_content_main')
     sectionTop = document.querySelector('#perfomance').offsetTop;
     if(window.innerWidth > 768){
         perfomanceVideo(sct,0.9 ,1.3);
         perfomanceText(sct,1.2 ,1.3);
         perfomanceBottom(sct, 1.4, 1.5);
     }else{
+        perfomanceVideoMobile(sct, 0.5, 0.7);
         perfomanceText(sct, 0.7, 0.75);
         perfomanceBottom(sct, 0.9, 1);
     }
     
 }
 
+function perfomanceVideoMobile(sct, min, max){
+    if(sct >= sectionTop*(min) && sct <= sectionTop*(max)){
+        video.querySelector('.perfomance_content_video').play();
+    }else if(sct < sectionTop*(min) || sct > sectionTop*(2.3)){
+        video.querySelector('.perfomance_content_video').pause();
+    }   
+}
 
 function perfomanceVideo(sct, min, max){
-    video = document.querySelector('.perfomance_content_main');
     if(sct >= sectionTop*(min) && sct <= sectionTop*(max)){
         newCounter(sct, min, max);
         video.querySelector('.perfomance_content_video').play();
@@ -332,6 +338,7 @@ function designArticleAni(sct){
 
 //safety event
 let safetyImgs = document.querySelectorAll('.safety_list li');
+let safetyImg = document.querySelector('.safety_list')
 let safetyVideoBox = document.querySelector('.safety_video_box');
 let safetyVideo = safetyVideoBox.querySelector('video');
 let safetyText = safetyVideoBox.querySelectorAll('.safety_video_text li');
@@ -355,24 +362,26 @@ function safetyImgOn(sct){
 safetyVideoOn()
 
 function safetyVideoOn(){
-    safetyImgs.forEach(function(item){
-        item.addEventListener('click',function(event){
-            event.preventDefault();
-            keyNum = event.target.dataset.num;
-            if(keyNum >= 0 && keyNum < 5){
-                safetyVideo.setAttribute('src',`video/safety${keyNum}.mp4`);
-                safetyVideo.play();
-                safetyVideoBox.classList.add('on');
-                safetyText.forEach(function(item){
-                    item.classList.remove('on');
-                })
-                safetyText[keyNum].classList.add('on');
-            }else{
-                return;
-            } 
-        })
-    })
+    safetyImg.addEventListener('click',function(event){
+        event.preventDefault();
+        keyNum = event.target.dataset.num;
+        if(keyNum >= 0 && keyNum < 5){
+            safetyVideo.setAttribute('src',`video/safety${keyNum}.mp4`);
+            safetyVideo.play();
+            safetyVideoBox.classList.add('on');
+            safetyText.forEach(function(item){
+                item.classList.remove('on');
+            })
+            safetyText[keyNum].classList.add('on');
+            if(window.innerWidth < 768){
+                window.scrollTo(0, objectTop);
+            }
+        }else{
+            return;
+        }
+    }) 
 }
+
 
 safetyVideoOff()
 
@@ -384,4 +393,14 @@ function safetyVideoOff(){
             item.classList.remove('on');
         })
     })
+}
+
+//mobile video change event
+let visualVideo = document.querySelector('#visual video')
+
+videoChange()
+function videoChange(){
+    if(window.innerWidth <= 760){
+        visualVideo.setAttribute('src','video/introMobile.mp4')
+    }
 }

@@ -47,6 +47,7 @@ $main_color : #0057EE;
 
 html{
     scroll-behavior: smooth;
+    font-size: 16px;
     @include middle_window{
         font-size: 14px;
     }
@@ -59,14 +60,12 @@ body{
     @include font(rem(14), normal, #3d3d3d);
     font-family: 'NanumSquare',sans-serif;
     overflow-x: hidden;
+    font-size: rem(14);
     h1{
         @include font(rem(24), bold);
     }
     h2{
-        @include font(rem(120), bold);
-        @include middle_window{
-            @include font(rem(80), bold);
-        }
+        @include font(rem(80), bold);
     }
     h3{
         font-size: rem(80);
@@ -85,15 +84,12 @@ body{
     }
     .inner{
         width: 1280px;
-        min-width: 1024px;
         margin: 0 auto;
         @include middle_window{
             width: 768px;
-            min-width: 768px;
         }
         @include mobile{
-            width: 340px;
-            min-width: 0;
+            width: 355px;
         }
     }
     .sticky{
@@ -131,6 +127,7 @@ header{
 //visual
 
 #visual{
+    overflow: hidden;
     .visual_content{
         background: #eee;
         padding-top: em(50,50);
@@ -148,12 +145,12 @@ header{
             margin-top: em(50,50);
             height: 100vh;
             @include mobile{
-                height: 50vh;
+                height: 70vh;
                 h3{
-                    @include font(30px);
+                    @include font(rem(30));
                 }
                 h2{
-                    @include font(40px,bolder);
+                    @include font(rem(50), bolder);
                 }
             }
             .visual_content_text_main{
@@ -167,10 +164,13 @@ header{
                 opacity: 0;
                 h5{
                     margin-bottom: em(40, 40);
+                    @include mobile{
+                        font-size:rem(30);
+                    }
                 }
                 p{
                     font-weight: bold;
-                    margin-top: em(20,20);
+                    margin-top: em(20,20); 
                     transition: 1s;
                     opacity: 0;
                     img{
@@ -334,7 +334,7 @@ header{
         width: 100vw;
         height: 640vh;
         @include mobile{
-            height: 300vh;
+            height: 500vh;
         }
         .v2l_content_main{
             position: relative;
@@ -544,19 +544,21 @@ header{
             }
         }
         .exterior_grid, .interior_grid{
-            height: 130vw;
+            height: 105vw;
             margin-top: em(60,14);
             margin-bottom: em(60,14);
             display: grid;
             grid-template-columns: repeat(2, auto);
-            grid-template-rows: repeat(3, 40vw);
+            grid-template-rows: repeat(3, 30vw);
             gap: 5vw 5vw;
             article{
-                @for $i from 1 to 7 {
-                    &:nth-child(#{$i}){
-                        grid-area: grid_article#{$i};
+                @include mobile{
+                    @for $i from 1 to 7 {
+                        &:nth-child(#{$i}){
+                            grid-area: grid_article#{$i};
+                        }
                     }
-                }
+                }  
             }
             @include mobile{
                 height: 420vw;
@@ -679,9 +681,12 @@ header{
                     .safety_list_text{
                         width: 100%;
                         background: #fff;
-                        @include position($b:-30%, $l:0);
+                        @include position($b:-40%, $l:0);
                         padding: em(30,30) em(50,30);
                         transition: 0.5s ease-in-out;
+                        @include mobile{
+                            bottom: 0;
+                        }
                         h6{
                             font-weight: bold;
                         }
@@ -736,19 +741,16 @@ header{
                 li{
                     display: none;
                     @include position;
+                    left: 0;
                     width: 70%;
                     @include mobile{
-                        width: 100vw;
-                        padding: 20px 40px;
+                        width: 70vw;
                     }
                     h6{
-                        @include font(rem(80), bold, #fff);
+                        @include font(rem(40), bold, #fff);
                         margin-bottom: em(30,40);
                         transform: translateY(100%);
                         opacity: 0;
-                        @include mobile{
-                            @include font(rem(40),bold, #fff);
-                        }
                     }
                     p{
                         @include font(rem(20), regular, #ccc);
