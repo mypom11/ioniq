@@ -403,6 +403,7 @@ header{
                 @include size;
                 transform: translate(-50%,-50%) scale(0);
                 transition: 1s;
+                z-index: 2;
                 video{
                     @include size;
                     object-fit: cover;

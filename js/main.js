@@ -4,6 +4,12 @@ let reverse;
 let sctTop;
 let sectionTop=0;
 
+window.addEventListener('resize', function(){
+    let visualVideo = document.querySelector('#visual video')
+    if(window.innerWidth <= 760){
+        visualVideo.setAttribute('src','video/introMobile.mp4')
+    }
+})
 window.addEventListener('scroll',function(){
     sctTop = window.pageYOffset;
     visual(sctTop, 300, 200);
@@ -201,13 +207,13 @@ function v2lFigure(sct, min){
 }
 
 function v2lBigText(sct, min, max){
-    if(sct >= sectionTop*min && sct < sectionTop*max){
+    if(sct >= sectionTop*min && sct <= sectionTop*max){
         newCounter(sct, min, max)
         textFigure.style.display = `block`;
         textFigure.style.transform = `translate(-50%,-50%) perspective(400px) translateZ(${count*100}px) scale(${(reverse*100)})`;
-    }else if(sct > sectionTop*min){
+    }else if(sct > sectionTop*max){
         textFigure.style.transform = `translate(-50%,-50%) perspective(400px) translateZ(100px) scale(1)`;
-    }else if(sct < sectionTop*max){
+    }else if(sct < sectionTop*min){
         textFigure.style.display='none';
     }
 }
@@ -393,14 +399,4 @@ function safetyVideoOff(){
             item.classList.remove('on');
         })
     })
-}
-
-//mobile video change event
-let visualVideo = document.querySelector('#visual video')
-
-videoChange()
-function videoChange(){
-    if(window.innerWidth <= 760){
-        visualVideo.setAttribute('src','video/introMobile.mp4')
-    }
 }
