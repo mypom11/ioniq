@@ -263,7 +263,7 @@ class Color{
         vrBg.dataset.color = this.colorName;
         modelColor = vrBg.dataset.color;
         vrBg.children[0].style.color = this.textColor;
-        model.children[0].setAttribute('src',`images/vr/${this.colorName}/${this.startNum}.png`);
+        model.children[0].setAttribute('src',`images/vr/${this.colorName}/${this.startNum}.webp`);
     }
 }
 let colors = [
@@ -294,7 +294,7 @@ function vrRotate(){
     model.addEventListener('mousemove',function(event){
         if(mouseDrag == true){
             currentMouse = event.offsetX/model.offsetWidth;
-            model.children[0].setAttribute('src',`images/vr/${modelColor}/${Math.floor(59-(currentMouse*59))}.png`);
+            model.children[0].setAttribute('src',`images/vr/${modelColor}/${Math.floor(59-(currentMouse*59))}.webp`);
         }
     })
     model.addEventListener('mouseup',function(){
