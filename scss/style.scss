@@ -416,6 +416,7 @@ header{
                 display: none;
                 flex-direction: column;
                 transition: 1s;
+                z-index: 3;
                 .blank{
                     height: 100%;
                 }
