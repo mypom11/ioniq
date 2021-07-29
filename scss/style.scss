@@ -588,7 +588,7 @@ header{
                 p{
                     line-height: em(50, 30);
                     margin-top: em(40, 30);
-                    @include font(rem(24), regular, #aaa);
+                    @include font(rem(24), normal, #aaa);
                     transform: translateY(100%);
                     opacity: 0;
                 }
@@ -698,7 +698,7 @@ header{
                 text-align: center;
                 width: 30%;
                 margin: 0 auto;
-                @include font(null, regular, $main_color);
+                @include font(null, normal, $main_color);
                 transform: translateY(-200%);
                 @include mobile{
                     transform: translateY(0);
@@ -754,7 +754,7 @@ header{
                         opacity: 0;
                     }
                     p{
-                        @include font(rem(20), regular, #ccc);
+                        @include font(rem(20), normal, #ccc);
                         line-height: em(30,20);
                         transform: translateY(100%);
                         opacity: 0;
@@ -788,7 +788,7 @@ footer{
             @include background('logo_footer.png');
         }
         select{
-            @include font(rem(14), regular, #fff);
+            @include font(rem(14), normal, #fff);
             background: #333;
             align-self: flex-end;
         }
@@ -820,7 +820,7 @@ footer{
         }
     }
     address{
-        @include font(rem(14), regular, #9c9c9c);
+        @include font(rem(14), normal, #9c9c9c);
         text-align: center;
         padding: em(10,14);
     }
